@@ -2,19 +2,18 @@
 #include<string>
 using namespace std;
 int main (){
-    int n=23,i=0;
-    int binaryofN[10];
+    int n=5,i=0;
+    int arr[10],mask[10]={1,1,1,1,1,1,1,1,1,1};
     while (n!=0)
     {
-        binaryofN[i]=n%2;
+        arr[i]=n%2;
         n=n/2;
         i++;
     }
-    while (i>=0)
-    {
-        cout<<binaryofN[i]<<endl;
+    i--;
+    while(i>=0){
+        arr[i]=(arr[i]^mask[i]);
+        cout<<arr[i];
         i--;
     }
-    
-    
 }
