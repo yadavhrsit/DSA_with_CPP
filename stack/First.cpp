@@ -16,29 +16,6 @@ class Stack{
         }
     }
 
-    int fill(void){
-        cout<<"Enter 5 Values "<<endl;
-        for (int i = 0; i < 5; i++)
-        {
-            cin>>arr[i];
-            cout<<" ";
-        }
-        cout<<endl<<"All 5 values Entered"<<endl;
-        
-    }
-
-    int change(void){
-        cout<<"Enter The Element You want to Change"<<endl;
-        int val;
-        cin>>val;
-        int pos;
-        cout<<"Change at : "<<pos;
-        if (arr[pos]>0 || pos>4)
-            arr[pos]=val;
-        else
-            cout<<"Invalid Position";
-    }
-
     int push(void){
         if (top==4)
         {
@@ -66,6 +43,24 @@ class Stack{
         }
     }
 
+    int peek(void){
+        cout<<"Peek at: ";
+        int pos;
+        cin>>pos;
+        (arr[pos]!=0 ? cout<<arr[pos] :cout<<"Invalid Position");
+    }
+
+    int display(void){
+        for (int i = top; i>=0; i--)
+        {
+            cout<<arr[i]<<endl;
+        }
+    }
+
+    int count(void){
+        cout<<top+1;
+    }
+
     int isEmpty(void){
         //cout<<"Its "<<(top==-1)?"Empty":"Not Empty";
         (top == -1 ? cout<<"Empty" :cout<<"Not Empty");
@@ -77,27 +72,75 @@ class Stack{
         (top == 4 ? cout<<"Full" :cout<<"Not Full");
     }
 
-    int Peek(void){
-        cout<<"Peek at: ";
+    int change(void){
+        cout<<"Enter The Position You want to Change at "<<endl;
         int pos;
         cin>>pos;
-        (arr[pos]!=0 ? cout<<arr[pos] :cout<<"Invalid Position");
-    }
 
-    int Count(void){
-        cout<<top+1;
-    }
+        cout<<"Enter The Value You want to Change it to "<<endl;
+        int val;
+        cin>>val;
 
-    int Display(void){
-        for (int i = 0; i < top; i++)
-        {
-            cout<<arr[i];
-        }
-    }
-
-
+        if (pos<=4){
+            arr[pos]=val;
+            cout<<"changed successfully";
+        }   
+        else
+            cout<<"Invalid Position";
+    }    
 };
 
 int main(){
-    
+
+    Stack obj;
+
+    short n = 1;
+    while (n)
+    {
+        cout<<endl<<"MENU"<<endl;
+        cout<<"1 "<<"PUSH"<<endl;
+        cout<<"2 "<<"POP"<<endl;
+        cout<<"3 "<<"PEEK"<<endl;
+        cout<<"4 "<<"DISPLAY"<<endl;
+        cout<<"5 "<<"COUNT"<<endl;
+        cout<<"6 "<<"IS FULL"<<endl;
+        cout<<"7 "<<"IS EMPTY"<<endl;
+        cout<<"8 "<<"CHANGE"<<endl;
+        cout<<"0 "<<"Exit"<<endl;
+        
+        cin>>n;
+
+        switch (n)
+        {
+        case 1:
+            obj.push();
+            break;
+        case 2:
+            obj.pop();
+            break;
+        case 3:
+            obj.peek();
+            break;
+        case 4:
+            obj.display();
+            break;
+        case 5:
+            obj.count();
+            break;
+        case 6:
+            obj.isFull();
+            break;
+        case 7:
+            obj.isEmpty();
+            break;
+        case 8:
+            obj.change();
+            break;
+        case 0:
+            break;
+        default:
+            cout<<"Invalid Input";
+            break;
+        }
+    }
 }
